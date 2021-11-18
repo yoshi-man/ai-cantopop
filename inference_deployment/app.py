@@ -153,19 +153,37 @@ class OneStep(tf.keras.Model):
 
 
 def generate_lyrics(seed_sentence, length):
+
+    if len(seed_sentence) == 0:
+        return 'No seed sentence provided'
+
+    if len(seed_sentence) > 12:
+        seed_sentence = seed_sentence[:12]
+
+    if length < 12:
+        length = 12
+
+    if length > 720:
+        length = 720
+
+
     one_step_model = OneStep(model, chars_from_ids, ids_from_chars)
 
-    states = None
-    next_char = tf.constant([seed_sentence])
-    result = [next_char]
+    try:
+        states = None
+        next_char = tf.constant([seed_sentence])
+        result = [next_char]
 
-    for n in range(length):
-        next_char, states = one_step_model.generate_one_step(next_char, states=states)
-        result.append(next_char)
+        for n in range(length):
+            next_char, states = one_step_model.generate_one_step(next_char, states=states)
+            result.append(next_char)
 
-    result = tf.strings.join(result)
+        result = tf.strings.join(result)
 
-    return result[0].numpy().decode('utf-8')
+        return result[0].numpy().decode('utf-8')
+
+    except Exception as err_message:
+        return "Error generating lyrics: " + err_message
 
 
 # In[25]:
@@ -192,12 +210,16 @@ def hello():
 @cross_origin()
 def get_lyrics(sentence, length):
 
-	results = {}
+    try:
+        results = {}
+        results['STATUS'] = 200
+        results['BODY'] = generate_lyrics(str(sentence), int(length))
+        return jsonify(results)
 
-	results['STATUS'] = 200
-
-	results['BODY'] = generate_lyrics(str(sentence), int(length))
-	
-	return jsonify(results)
+    except Exception as error_message:
+        results = {}
+        results['STATUS'] = 400
+        results['BODY'] = 'Error getting lyrics: ' + error_message
+        return jsonify(results)
 
 
