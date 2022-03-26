@@ -10,3 +10,5 @@ Cantopop has been a huge part of the Hong Kong cultural since the 1960's, and of
 
 Here I will include more in-depth explanations of how exactly I did each step, and what kinds of decisions were made in designing the process. Do note that the approach for this project was to get to the result as fast as possible, more of a "maximise the result with the least effort" kind of approach. So it's far from perfect, and there's a ton that can be improved for the pipeline or simply just the code.
 
+Here's an example of a resultant GIF:
+https://yoshi-m-website.s3.ap-east-1.amazonaws.com/card_flip_demo.gif
