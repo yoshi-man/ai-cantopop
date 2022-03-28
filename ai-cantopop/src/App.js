@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { ReactComponent as Spinner } from './Spinner.svg'
 import axios
  from 'axios';
@@ -9,7 +9,6 @@ function App() {
 
   const [isLoading, setIsLoading ] = useState(false)
   const [lyrics, setLyrics ] = useState("")
-  const [translation, setTranslation ] = useState("")
   const [errorMsg, setErrorMsg ] = useState(null)
   
   const areValidInputs = (seed, length)=> {
@@ -60,9 +59,6 @@ function App() {
     getLyrics(seed, length)
   }
 
-  useEffect( () => {
-    console.log('Translation:', translation)
-  }, [translation])
 
   return (
     <div>
