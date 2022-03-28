@@ -8,6 +8,6 @@ Cantopop has been a huge part of the Hong Kong cultural since the 1960's, and of
 
 ## What You'll Find Here
 
-Here I will include more in-depth explanations of how exactly I did each step, and what kinds of decisions were made in designing the process. Do note that the approach for this project was to get to the result as fast as possible, more of a "maximise the result with the least effort" kind of approach. So it's far from perfect, and there's a ton that can be improved for the pipeline or simply just the code.
+Here you'll find the code that pertains to the backend generation of the lyrics and the website that comes with it. Do note that the approach for this project was to get to the result as fast as possible, more of a "maximise the result with the least effort" kind of approach. So it's far from perfect, and there's a ton that can be improved for the pipeline or simply just the code.
 
 
